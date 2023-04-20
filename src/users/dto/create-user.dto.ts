@@ -18,6 +18,5 @@ export class CreateUserDto {
   @ApiProperty({ uniqueItems: true })
   password: string;
   @IsString({ message: 'The refreshToken field is string' })
-  @ApiProperty({ type: 'string' })
   refreshToken?: string;
 }

@@ -6,9 +6,9 @@ export class CreatePokemonDto {
   @IsInt()
   @IsPositive()
   @Min(1)
-  no?: number;
+  no: number;
   @ApiProperty({ description: 'The name of the pokemon', example: 'Charizard' })
   @IsString()
   @MinLength(1)
-  name?: string;
+  name: string;
 }
