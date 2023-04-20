@@ -1,12 +1,7 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ConfigService } from '@nestjs/config';
-import {
-  SwaggerModule,
-  DocumentBuilder,
-  SwaggerDocumentOptions,
-} from '@nestjs/swagger';
+import { initSwagger } from './app.swagger';
 
 async function bootstrap() {
   const logger = new Logger();
@@ -22,24 +17,17 @@ async function bootstrap() {
       },
     }),
   );
-  /* ======= LOAD CONFIG .ENV.* ======= */
-  const env: ConfigService<Record<string, unknown>> = app.get(ConfigService);
-  // Swagger documentation setup
-  const config = new DocumentBuilder()
-    .setTitle('Pokedex apisolutions')
-    .setDescription('The Pokedex API description')
-    .setVersion('1.0')
-    .addTag('pokedex')
-    .build();
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  /* ======= INIT DOC SWAGGER ======= */
+  if (process.env.NODE_ENV !== 'production') {
+    initSwagger(app);
+  }
   // Run api listen
-  await app.listen(env.get<number>('api.port'), '0.0.0.0');
+  await app.listen(process.env.PORT, '0.0.0.0');
   logger.log(`Pokedex-Apisolutions App running on port ${process.env.PORT}`);
   /* ======= DOCS GENERATE ======= */
   if (process.env.NODE_ENV !== 'production') {
     logger.debug(
-      `Swagger document generated ${await app.getUrl()}/api`,
+      `Swagger document generated ${await app.getUrl()}/api/docs`,
       'Swagger',
     );
   }
