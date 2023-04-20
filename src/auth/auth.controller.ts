@@ -4,6 +4,7 @@ import {
   ApiOperation,
   ApiResponse,
   ApiTags,
+  ApiBody,
 } from '@nestjs/swagger';
 import { Request } from 'express';
 import { AccessTokenGuard } from 'src/common/guards/accessToken.guard';
@@ -19,13 +20,16 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @Post('signup')
-  signup(@Body() createUserDto: CreateUserDto) {
-    return this.authService.signUp(createUserDto);
+  async signup(@Body() createUserDto: CreateUserDto) {
+    const data = await this.authService.signUp(createUserDto);
+    return { message: 'Registration User Successful', data };
   }
 
+  @ApiBody({ type: AuthDto })
   @Post('signin')
-  signin(@Body() data: AuthDto) {
-    return this.authService.signIn(data);
+  async signin(@Body() user: AuthDto) {
+    const data = await this.authService.signIn(user);
+    return { message: 'Login Successful', data };
   }
 
   @UseGuards(AccessTokenGuard)

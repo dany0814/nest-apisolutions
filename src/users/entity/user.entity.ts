@@ -6,7 +6,6 @@ export type UserDocument = User & Document;
 
 @Schema()
 export class User {
-  @ApiProperty({ example: 'Julio', description: 'Nombre del usuario' })
   @Prop({ required: true })
   name: string;
 

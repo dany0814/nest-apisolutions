@@ -5,11 +5,13 @@ import {
   Body,
   Patch,
   Param,
+  Res,
   Delete,
   Query,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
+  ApiBody,
   ApiOperation,
   ApiResponse,
   ApiTags,
@@ -27,6 +29,7 @@ export class PokemonController {
   constructor(private readonly pokemonService: PokemonService) {}
 
   @Post()
+  @ApiBody({ type: CreatePokemonDto })
   create(@Body() createPokemonDto: CreatePokemonDto) {
     return this.pokemonService.create(createPokemonDto);
   }
@@ -42,11 +45,19 @@ export class PokemonController {
   }
 
   @Patch(':term')
-  update(
+  @ApiBody({
+    description: 'Update a pokemon on UpdatePokemonDto',
+    type: UpdatePokemonDto,
+  })
+  async update(
     @Param('term') term: string,
     @Body() updatePokemonDto: UpdatePokemonDto,
   ) {
-    return this.pokemonService.update(term, updatePokemonDto);
+    const data = await this.pokemonService.update(term, updatePokemonDto);
+    return {
+      message: 'Pokemon has been successfully updated',
+      data,
+    };
   }
 
   @Delete(':id')
