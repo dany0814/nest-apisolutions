@@ -22,7 +22,6 @@ export class SeedService {
     data.results.forEach(async ({ name, url }) => {
       const segments = url.split('/');
       const no = +segments[segments.length - 2];
-      // const pokemon = await this.pokemonModel.create({ name, no });
       pokemonToInsert.push({ name, no });
     });
     await this.pokemonModel.insertMany(pokemonToInsert);

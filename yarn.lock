@@ -375,6 +375,14 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
+"@fastify/helmet@^10.1.0":
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/@fastify/helmet/-/helmet-10.1.0.tgz#8b124c807d9528680e6dcef8ca3e2e614eb547e5"
+  integrity sha512-v7QJPYf1uVcCwzyHzkDGcHTqDPscXj/61JKxOdvczyDPAKTxSeb9Sc2OBActXaj7zUELiAdgnkKkzNwmCNzBLQ==
+  dependencies:
+    fastify-plugin "^4.2.1"
+    helmet "^6.0.0"
+
 "@hapi/hoek@^9.0.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.3.0.tgz#8368869dcb735be2e7f5cb7647de78e167a251fb"
@@ -2514,6 +2522,11 @@ fast-safe-stringify@2.1.1, fast-safe-stringify@^2.1.1:
   resolved "https://registry.npmjs.org/fast-safe-stringify/-/fast-safe-stringify-2.1.1.tgz"
   integrity sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==
 
+fastify-plugin@^4.2.1:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-4.5.0.tgz#8b853923a0bba6ab6921bb8f35b81224e6988d91"
+  integrity sha512-79ak0JxddO0utAXAQ5ccKhvs6vX2MGyHHMMsmZkBANrq3hXc1CHzvNPHOcvTsVMEPl5I+NT+RO4YKMGehOfSIg==
+
 fastq@^1.6.0:
   version "1.13.0"
   resolved "https://registry.npmjs.org/fastq/-/fastq-1.13.0.tgz"
@@ -2825,6 +2838,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+helmet@^6.0.0:
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-6.1.5.tgz#2153387f6d73cce6efdfd85d3a65417cfb7db80c"
+  integrity sha512-UgAvdoG0BhF9vcCh/j0bWtElo2ZHHk6OzC98NLCM6zK03DEVSM0vUAtT7iR+oTo2Mi6sGelAH3tL6B/uUWxV4g==
 
 hexoid@1.0.0:
   version "1.0.0"

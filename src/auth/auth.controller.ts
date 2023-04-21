@@ -12,6 +12,7 @@ import { RefreshTokenGuard } from 'src/common/guards/refreshToken.guard';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { AuthService } from './auth.service';
 import { AuthDto } from './dto/auth.dto';
+import { any } from 'joi';
 
 @ApiBearerAuth()
 @ApiTags('auth')
@@ -34,15 +35,15 @@ export class AuthController {
 
   @UseGuards(AccessTokenGuard)
   @Get('logout')
-  logout(@Req() req: Request) {
-    this.authService.logout(req.body.user['sub']);
+  logout(@Req() req: any) {
+    this.authService.logout(req.user['sub']);
   }
 
-  @UseGuards(RefreshTokenGuard)
-  @Get('refresh')
-  refreshTokens(@Req() req: Request) {
-    const userId = req.body.user['sub'];
-    const refreshToken = req.body.user['refreshToken'];
+  @ApiBody({ type: any })
+  @Post('refresh')
+  refreshTokens(@Body() req: Request) {
+    const userId = req['sub'];
+    const refreshToken = req['refreshToken'];
     return this.authService.refreshTokens(userId, refreshToken);
   }
 }

@@ -29,7 +29,6 @@ export class UsersController {
 
   @Post()
   @ApiOperation({ summary: 'Create user' })
-  @ApiResponse({ status: 403, description: 'Forbidden.' })
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
   }
@@ -40,11 +39,6 @@ export class UsersController {
   }
 
   @Get(':id')
-  @ApiResponse({
-    status: 200,
-    description: 'The found record',
-    type: User,
-  })
   findById(@Param('id') id: string) {
     return this.usersService.findById(id);
   }
