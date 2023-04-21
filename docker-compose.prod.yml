@@ -12,10 +12,8 @@ services:
     restart: always # reiniciar el contenedor si se detiene
     ports:
       - "${PORT}:${PORT}"
-    environment:
-      MONGODB: ${MONGODB}
-      PORT: ${PORT}
-      DEFAULT_LIMIT: ${DEFAULT_LIMIT}
+    env_file:
+      - ${PWD}/.env.prod
 
   db:
     image: mongo:5

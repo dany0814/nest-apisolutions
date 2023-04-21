@@ -46,5 +46,5 @@ http://localhost:3000/api/v2/seed
 
 3. Crear la nueva imagen
 ```
-docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build -d
+docker-compose -f docker-compose.prod.yml --env-file .env.prod up --build -d
 ```
