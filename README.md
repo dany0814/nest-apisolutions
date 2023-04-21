@@ -29,9 +29,13 @@ docker-compose up -d
 yarn start:dev
 ```
 
-8. Reconstruir la base de datos con la semilla
+8. Reconstruir la base de datos con la semilla en un navegador (También se puede desde Swagger)
 ```
 http://localhost:3000/api/v2/seed
+```
+9. Documentación de controladores en Swagger
+```
+http://localhost:3000/api/docs
 ```
 
 ## Stack usado
@@ -47,4 +51,12 @@ http://localhost:3000/api/v2/seed
 3. Crear la nueva imagen
 ```
 docker-compose -f docker-compose.prod.yml --env-file .env.prod up --build -d
+```
+4. Reconstruir la base de datos con la semilla en un navegador (También se puede desde Swagger)
+```
+http://localhost:3000/api/v2/seed
+```
+5. Documentación de controladores en Swagger
+```
+http://localhost:3000/api/docs
 ```
