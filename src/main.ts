@@ -2,7 +2,6 @@ import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { initSwagger } from './app.swagger';
-import fastifyHelmet from '@fastify/helmet';
 
 async function bootstrap() {
   const logger = new Logger();
